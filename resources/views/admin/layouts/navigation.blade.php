@@ -24,6 +24,19 @@
                 </div>
             </div>
             @endif
+            <div class="nav--dropdown">
+                <x-nav-link :href="route('bicycle.index')" :active="str_contains($route, 'bicycle.')">
+                    {{ __('Vélos') }}
+                </x-nav-link>
+                <div class="nav--dropdown-item">
+                    <x-nav-link :href="route('bicycle.index')">
+                        {{ __('Gestion des vélo') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('bicycle.create')">
+                        {{ __('Ajouter un vélo') }}
+                    </x-nav-link>
+                </div>
+            </div>
         </div>
     </div>
 

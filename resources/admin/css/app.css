@@ -93,7 +93,7 @@ input[type=file]::file-selector-button {
   font-weight: 400;
   line-height: 150%;
   letter-spacing: 0;
-  padding: 0.31rem 1.2rem;
+  padding: 0.15rem 0.6rem;
   margin-right: 1rem;
   width: fit-content;
   height: fit-content;
@@ -101,7 +101,7 @@ input[type=file]::file-selector-button {
 }
 input[type=file]::file-selector-button:hover {
   cursor: pointer;
-  background-color: var(--secondary-color-1);
+  background-color: var(--secondary-color-2);
   color: var(--primary-dark);
   border: 1px solid var(--primary-dark);
 }
@@ -734,19 +734,19 @@ h6, .h6 {
 
 :root {
   --primary-dark: #191919;
-  --primary-light: #FFF;
-  --secondary-light: #f6f6f6;
-  --secondary-dark: #000;
-  --secondary-color-1: #EAE0D6;
-  --secondary-color-2: #D3E0D3;
-  --secondary-color-3: #CDDFE6;
-  --secondary-color-4: #DAD6EA;
+  --primary-light: #FBFBFB;
+  --secondary-light: #f0f5f6;
+  --secondary-dark: #2E3625;
+  --secondary-color-1: #F9C105;
+  --secondary-color-2: #a6b6ad;
+  --secondary-color-3: #d2b183;
+  --secondary-color-4: #eedda0;
   --stroke-light: #E0E0E0;
   --stroke-dark: #3F3E3E;
-  --info: #cce3ef;
-  --warning: #efe7cc;
-  --success: #d5efcc;
-  --danger: #efcccc;
+  --info: #a8d9d7;
+  --warning: #eedda7;
+  --success: #c4debb;
+  --danger: #e3c0c0;
 }
 
 .bg--primary-dark {
