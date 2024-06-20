@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "gsap": "^3.12.5",
-        "htmx.org": "^1.9.12"
+        "htmx.org": "^1.9.12",
+        "tom-select": "^2.3.1"
     }
 }

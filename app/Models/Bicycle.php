@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  *
@@ -58,4 +60,14 @@ class Bicycle extends Model
         'delivery_location',
         'delivery_status'
     ];
+
+    public function repairs(): BelongsToMany
+    {
+        return $this->belongsToMany(Repair::class);
+    }
+
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

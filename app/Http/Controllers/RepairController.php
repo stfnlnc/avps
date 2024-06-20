@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RepairRequest;
 use App\Models\Repair;
-use Illuminate\Console\Application;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
-use Illuminate\View\Factory;
-use View;
 
 class RepairController extends Controller
 {
@@ -17,11 +17,11 @@ class RepairController extends Controller
     {
         $search = $request->query('search');
 
-        $repair = Repair::where('repair.type', 'like', '%' . $search . '%')
+        $repairs = Repair::where('repairs.type', 'like', '%' . $search . '%')
             ->paginate(25);
 
         return view('admin.repair.index', [
-            'repair' => $repair,
+            'repairs' => $repairs,
         ]);
     }
 

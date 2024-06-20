@@ -37,6 +37,32 @@
                     </x-nav-link>
                 </div>
             </div>
+            <div class="nav--dropdown">
+                <x-nav-link :href="route('location.index')" :active="str_contains($route, 'location.')">
+                    {{ __('Lieux') }}
+                </x-nav-link>
+                <div class="nav--dropdown-item">
+                    <x-nav-link :href="route('location.index')">
+                        {{ __('Gestion des lieux') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('location.create')">
+                        {{ __('Ajouter un lieu') }}
+                    </x-nav-link>
+                </div>
+            </div>
+            <div class="nav--dropdown">
+                <x-nav-link :href="route('repair.index')" :active="str_contains($route, 'repair.')">
+                    {{ __('Types de réparations') }}
+                </x-nav-link>
+                <div class="nav--dropdown-item">
+                    <x-nav-link :href="route('repair.index')">
+                        {{ __('Gestion des types de réparations') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('repair.create')">
+                        {{ __('Ajouter un type de réparation') }}
+                    </x-nav-link>
+                </div>
+            </div>
         </div>
     </div>
 

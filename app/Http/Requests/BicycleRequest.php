@@ -36,7 +36,8 @@ class BicycleRequest extends FormRequest
             'recipient' => ['nullable', 'string', 'max:255'],
             'delivery_date' => ['nullable', 'date', 'max:255'],
             'delivery_location' => ['nullable', 'string', 'max:255'],
-            'delivery_status' => ['nullable', 'boolean']
+            'delivery_status' => ['nullable', 'boolean'],
+            'repairs' => ['array', 'exists:repairs,id', 'nullable'],
         ];
     }
 }

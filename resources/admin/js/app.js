@@ -3,6 +3,9 @@ import 'htmx.org';
 import * as htmx from "htmx.org";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import 'tom-select/dist/css/tom-select.bootstrap4.css';
+import TomSelect from 'tom-select';
+window.TomSelect = TomSelect;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +36,11 @@ htmx.onLoad(function (target) {
             })
         })
     }
+
+    new TomSelect("#select-state",{
+
+    });
+
 });
 
 window.Alpine = Alpine;

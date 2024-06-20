@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Repair;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RepairRequest extends FormRequest
 {
@@ -22,7 +24,8 @@ class RepairRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'type' => ['required', 'string', 'max:255', Rule::unique(Repair::class)],
+            'slug' => ['string', 'max:255'],
         ];
     }
 }

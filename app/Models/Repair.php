@@ -10,4 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class Repair extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'type',
+        'slug'
+    ];
 }

@@ -2,9 +2,9 @@
     @csrf
     @method($bicycle->exists ? 'put' : 'post')
 
-    <h5>Informations</h5>
-    <div class="grid grid--2 grid--1-mobile grid-gap--4">
+    <div class="grid grid--2 grid--1-mobile grid-gap--16">
         <div class="flex col gap--2">
+            <h5>Références</h5>
             <!-- Image -->
             <div>
                 <x-input-label for="picture" :value="__('Image')"/>
@@ -22,6 +22,7 @@
             </div>
         </div>
         <div class="flex col gap--2">
+            <h5>Informations</h5>
             <!-- Model -->
             <div>
                 <x-input-label for="name" :value="__('Nom / Modèle')"/>
@@ -40,6 +41,16 @@
         </div>
         <div class="flex col gap--2">
             <h5>Réparations</h5>
+            <!-- Repairs -->
+            <div>
+                <x-input-label for="repairs" :value="__('Type de réparation')"/>
+                <select class="form-select" name="repairs[]" id="select-state" multiple placeholder="Sélectionner les réparations" autocomplete="off">
+                    @foreach($repairs as $key => $repair)
+                        <option @selected($bicycle->repairs()->pluck('id')->contains($key)) value="{{ $key }}">{{ $repair }}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('repairs')"/>
+            </div>
             <!-- Start Date -->
             <div>
                 <x-input-label for="start_date" :value="__('Début')"/>
@@ -84,7 +95,9 @@
     </div>
 
     <div class="flex col gap--4 mt--4">
+        @if(!$bicycle->exists)
         <p class="text--s">* La référence du vélo est générée automatiquement lors de la validation</p>
+        @endif
         <x-primary-button>
             {{ __('Enregistrer') }}
         </x-primary-button>
