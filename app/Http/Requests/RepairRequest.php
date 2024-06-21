@@ -24,7 +24,7 @@ class RepairRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => ['required', 'string', 'max:255', Rule::unique(Repair::class)],
+            'type' => ['required', 'string', 'max:255'],
             'slug' => ['string', 'max:255'],
         ];
     }

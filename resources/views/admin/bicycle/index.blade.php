@@ -33,27 +33,27 @@
             <p>Date de début</p>
             <p>Date de fin</p>
             <p>Date de livraison</p>
-            <p>Statut</p>
+            <p class="flex row justify--center">Statut de livraison</p>
             <p class="flex row justify--end">Actions</p>
         </div>
         <div id="search-results">
             <!-- Show all users order by role -->
             @foreach($bicycles as $key => $bicycle)
                 <div class="grid grid--7 grid--1-mobile grid-gap--2 w--100 p--2 border--rounded {{ ($key % 2 != 0) ? 'bg--secondary-light' : '' }}">
-                    <p class="flex row align--center text--s">{{ $bicycle->name }}</p>
-                    <p class="flex row align--center gap--1 text--s hide-mobile">
-
+                    <p class="flex row align--center text--s underline"><a href="{{ route('bicycle.show', $bicycle) }}">{{ $bicycle->name }}</a></p>
+                    <p class="flex row align--center gap--1 text--s hide-mobile @if(empty($bicycle->location)) c--stroke-light @endif">
+                        {{ !empty($bicycle->location) ? $bicycle->location->name : 'N/A' }}
                     </p>
-                    <p class="flex row align--center gap--1 text--s hide-mobile">
+                    <p class="flex row align--center gap--1 text--s hide-mobile @if(empty($bicycle->start_date)) c--stroke-light @endif">
                         {{ !empty($bicycle->start_date) ? date_format(new DateTimeImmutable($bicycle->start_date), 'd/m/Y') : 'N/A' }}
                     </p>
-                    <p class="flex row align--center gap--1 text--s hide-mobile">
+                    <p class="flex row align--center gap--1 text--s hide-mobile @if(empty($bicycle->end_date)) c--stroke-light @endif }} ">
                         {{ !empty($bicycle->end_date) ? date_format(new DateTimeImmutable($bicycle->end_date), 'd/m/Y') : 'N/A' }}
                     </p>
-                    <p class="flex row align--center gap--1 text--s hide-mobile">
+                    <p class="flex row align--center gap--1 text--s hide-mobile @if(empty($bicycle->delivery_date)) c--stroke-light @endif">
                         {{ !empty($bicycle->delivery_date) ? date_format(new DateTimeImmutable($bicycle->delivery_date), 'd/m/Y') : 'N/A' }}
                     </p>
-                    <p class="flex row align--center gap--1 text--s hide-mobile">
+                    <p class="flex row align--center gap--1 text--s hide-mobile justify--center">
                         <x-check :check="$bicycle->delivery_status"></x-check>
                     </p>
                     <div class="flex row align--center gap--2 justify--end">

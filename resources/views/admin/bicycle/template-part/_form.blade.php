@@ -1,4 +1,4 @@
-<form class="flex col gap--2" method="POST" action="{{ route($bicycle->exists ? 'bicycle.update' : 'bicycle.store', $bicycle) }}">
+<form class="flex col gap--2" enctype="multipart/form-data" method="POST" action="{{ route($bicycle->exists ? 'bicycle.update' : 'bicycle.store', $bicycle) }}">
     @csrf
     @method($bicycle->exists ? 'put' : 'post')
 
@@ -8,7 +8,7 @@
             <!-- Image -->
             <div>
                 <x-input-label for="picture" :value="__('Image')"/>
-                <x-file-input id="picture" type="text" name="picture" autofocus
+                <x-file-input id="picture" name="picture" autofocus
                 />
                 <x-input-error :messages="$errors->get('picture')"/>
             </div>
@@ -16,7 +16,7 @@
             <!-- QR Code -->
             <div>
                 <x-input-label for="qr_code" :value="__('QR Code')"/>
-                <x-file-input id="qr_code" type="text" name="qr_code" autofocus
+                <x-file-input id="qr_code" name="qr_code" autofocus
                 />
                 <x-input-error :messages="$errors->get('qr_code')"/>
             </div>
@@ -38,13 +38,26 @@
                               autocomplete="serial_number"/>
                 <x-input-error :messages="$errors->get('serial_number')"/>
             </div>
+            <!-- Location -->
+            <div>
+                <x-input-label for="location" :value="__('Lieu')"/>
+                <select class="form-select" name="location" id="select" autocomplete="off">
+                    @foreach($locations as $key => $location)
+                        <option value="">Sélectionner un lieu</option>
+                        <option @if($bicycle->exists && $bicycle->location !== null && $location->name === $bicycle->location->name)
+                                    {{ 'selected' }}
+                                @endif value="{{ $location->id }}">{{ $location->name }}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('location')"/>
+            </div>
         </div>
         <div class="flex col gap--2">
             <h5>Réparations</h5>
             <!-- Repairs -->
             <div>
                 <x-input-label for="repairs" :value="__('Type de réparation')"/>
-                <select class="form-select" name="repairs[]" id="select-state" multiple placeholder="Sélectionner les réparations" autocomplete="off">
+                <select class="form-select" name="repairs[]" id="select-multiple" multiple placeholder="Sélectionner les réparations" autocomplete="off">
                     @foreach($repairs as $key => $repair)
                         <option @selected($bicycle->repairs()->pluck('id')->contains($key)) value="{{ $key }}">{{ $repair }}</option>
                     @endforeach
@@ -83,6 +96,14 @@
                 <x-text-input id="delivery_location" type="text" name="delivery_location" :value="old('delivery_location', $bicycle->delivery_location)" autofocus
                               autocomplete="delivery_location"/>
                 <x-input-error :messages="$errors->get('delivery_location')"/>
+            </div>
+
+            <!-- Delivery Recipient -->
+            <div>
+                <x-input-label for="recipient" :value="__('Bénéficiaire')"/>
+                <x-text-input id="recipient" type="text" name="recipient" :value="old('recipient', $bicycle->recipient)" autofocus
+                              autocomplete="recipient"/>
+                <x-input-error :messages="$errors->get('recipient')"/>
             </div>
 
             <!-- Delivery Status -->

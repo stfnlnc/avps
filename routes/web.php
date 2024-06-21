@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BicycleController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepairController;
@@ -18,11 +19,13 @@ Route::middleware(['role:admin|editor'])->prefix('dashboard')->group(function ()
         'show'
     ]);
     Route::resource('bicycle', BicycleController::class);
-    Route::resource('location', LocationController::class);
-    Route::resource('repair', RepairController::class);
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::resource('location', LocationController::class)->except([
+        'show'
+    ]);;
+    Route::resource('repair', RepairController::class)->except([
+        'show'
+    ]);;
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::middleware(['auth'])->get('/profile', [ProfileController::class, 'index'])->name('profile');

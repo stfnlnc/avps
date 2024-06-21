@@ -25,9 +25,9 @@ class BicycleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'picture' => ['nullable', 'string', 'max:255'],
-            'qr_code' => ['nullable', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255', Rule::unique(Bicycle::class)],
+            'picture' => ['image', 'mimes:jpeg,jpg,png', 'max:2000', 'nullable'],
+            'qr_code' => ['image', 'mimes:jpeg,jpg,png', 'max:2000', 'nullable'],
+            'name' => ['required', 'string', 'max:255'],
             'slug' => ['string', 'max:255'],
             'serial_number' => ['nullable', 'string', 'max:255'],
             'ref_number' => ['nullable', 'string', 'max:255'],
@@ -38,6 +38,8 @@ class BicycleRequest extends FormRequest
             'delivery_location' => ['nullable', 'string', 'max:255'],
             'delivery_status' => ['nullable', 'boolean'],
             'repairs' => ['array', 'exists:repairs,id', 'nullable'],
+            'location' => ['exists:locations,id', 'nullable'],
         ];
     }
+
 }

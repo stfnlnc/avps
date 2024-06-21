@@ -37,9 +37,8 @@ htmx.onLoad(function (target) {
         })
     }
 
-    new TomSelect("#select-state",{
-
-    });
+    new TomSelect("#select-multiple",{});
+    new TomSelect("#select",{});
 
 });
 

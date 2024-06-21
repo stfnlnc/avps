@@ -17,6 +17,14 @@
   cursor: grabbing;
 }
 
+.thumbnail {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius);
+}
+
 .icon {
   width: 1.5rem;
   height: 1.5rem;
@@ -396,7 +404,6 @@ card {
   padding: 0.31rem 0.63rem;
   width: fit-content;
   height: fit-content;
-  user-select: none;
 }
 .tag--primary-dark {
   color: var(--primary-light);

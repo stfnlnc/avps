@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="container pt--8 pb--8 flex col gap--4">
-        <div class="flex row col-mobile gap--4 w--fit-content">
+        <div class="flex row col-mobile gap--4">
             <card>
                     @include('profile.partials.update-profile-information-form')
             </card>
