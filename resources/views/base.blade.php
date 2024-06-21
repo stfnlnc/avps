@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex">
     <link rel="icon" href="">
     <link rel="apple-touch-icon" sizes="152x152" href="">
     <link rel="apple-touch-icon" sizes="167x167" href="">
